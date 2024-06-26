@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Build maven'){
             steps {
-                sh 'cd ./hr-eureka-server/
+                sh 'cd ./hr-eureka-server/'
                 sh 'cd mvn install -DskipTests'
             }
         }
