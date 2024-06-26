@@ -16,7 +16,7 @@ pipeline {
                 sh 'echo "Testando"'
             }
         }
-        stage ('Teste estatico com o SonarQube'){
+        stage ('SonarQube Analysis'){
             steps {
                 sh 'echo "Testando"'
             }
