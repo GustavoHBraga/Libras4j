@@ -2,7 +2,6 @@ package com.devsuperior.hruser.resources;
 
 import com.devsuperior.hruser.entities.User;
 import com.devsuperior.hruser.repositories.UserRepository;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,7 @@ public class UserResouce {
     private UserRepository userRepository;
     
     @GetMapping
-    public ResponseEntity<?> listAll(){
+    public ResponseEntity<List<User>> listAll(){
         List<User> users = userRepository.findAll();
         
         return !users.isEmpty() ? ResponseEntity.ok(users) : ResponseEntity.ok().build();
@@ -27,8 +26,8 @@ public class UserResouce {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable Long id){
-        User user = userRepository.findById(id).get();
-        return ResponseEntity.ok(user);
+        User user = userRepository.findById(id).orElse(null);
+        return user != null ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
     }
     
     @PostMapping

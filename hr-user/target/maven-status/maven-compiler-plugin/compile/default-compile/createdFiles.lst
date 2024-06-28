@@ -1,0 +1,5 @@
+com/devsuperior/hruser/repositories/UserRepository.class
+com/devsuperior/hruser/resources/UserResouce.class
+com/devsuperior/hruser/HrUserApplication.class
+com/devsuperior/hruser/entities/Role.class
+com/devsuperior/hruser/entities/User.class
