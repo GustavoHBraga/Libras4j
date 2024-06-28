@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SONAR_LOCAL') {
-                    sh "cd hr-user/ && ${sonarscanner}/bin/sonar-scanner -e -Dsonar.projectKey=Libras4j -Dsonar.projectName='Libras4j' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_e35f2a08e3555aac8f1d4353c0c7d33936d63808 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/entities/**,**/src/test/java/com/devsuperior/hruser/**,**Application.java"
+                    sh "cd hr-user/ && ${sonarscanner}/bin/sonar-scanner -e -Dsonar.projectKey=Libras4j -Dsonar.projectName='Libras4j' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_e35f2a08e3555aac8f1d4353c0c7d33936d63808 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/entities/**,**/src/test/java/com/devsuperior/hruser/**,**Application.java,**/target/surefire-reports/**"
                 }
             }
         }
