@@ -34,4 +34,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: 'hr-user/target/surefire-reports/*.xml'
+        }
+    }
 }
