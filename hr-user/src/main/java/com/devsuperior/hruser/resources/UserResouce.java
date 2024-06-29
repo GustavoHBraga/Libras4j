@@ -1,5 +1,5 @@
 package com.devsuperior.hruser.resources;
-
+import com.devsuperior.hruser.entities.Role;
 import com.devsuperior.hruser.entities.User;
 import com.devsuperior.hruser.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +41,26 @@ public class UserResouce {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
     
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userUpdate) {
+        return userRepository.findById(id)
+            .map(user -> {
+                if (userUpdate.getName() != null) {
+                    user.setName(userUpdate.getName());
+                }
+                if (userUpdate.getEmail() != null) {
+                    user.setEmail(userUpdate.getEmail());
+                }
+                if (userUpdate.getPassword() != null) {
+                    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+                    user.setPassword(encoder.encode(userUpdate.getPassword()));
+                }
+                
+                User updatedUser = userRepository.save(user);
+                return ResponseEntity.ok(updatedUser);
+            })
+            .orElseGet(() -> ResponseEntity.notFound().build());
+    }
     
     @GetMapping("/search")
     public ResponseEntity<User> findByEmail(@RequestParam String email){
