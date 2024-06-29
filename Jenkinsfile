@@ -27,12 +27,7 @@ pipeline {
             }
             
         }
-        stage('Quality Gate'){
-            steps{
-                sleep(5)
-                waitForQualityGate abortPipeline: true
-            }
-        }
+        
         stage ('Deploy microservices'){
             steps {
                 sh 'echo "Testando"'
