@@ -1,6 +1,0 @@
-projectKey=Libras4j
-serverUrl=http://localhost:9000
-serverVersion=10.6.0.92116
-dashboardUrl=http://localhost:9000/dashboard?id=Libras4j
-ceTaskId=4fbea312-2a6a-45e7-9a9f-484e8fde28b5
-ceTaskUrl=http://localhost:9000/api/ce/task?id=4fbea312-2a6a-45e7-9a9f-484e8fde28b5

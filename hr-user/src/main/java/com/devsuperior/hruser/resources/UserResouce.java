@@ -65,7 +65,7 @@ public class UserResouce {
     @GetMapping("/search")
     public ResponseEntity<User> findByEmail(@RequestParam String email){
         User user = userRepository.findByEmail(email);
-        return ResponseEntity.ok(user);
+        return user != null ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
     }
     
 }
