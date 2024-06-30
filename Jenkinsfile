@@ -46,7 +46,7 @@ pipeline {
         stage ('Deploy microservice server - HR-SERVER'){
             steps {
                 sh 'docker rm -f hr-server'
-                sh 'cd hr-eureka-server/ && docker-compose up -d'
+                sh 'cd hr-eureka-server/ && docker-compose up -d --force-recreate'
             }
         }
         
@@ -55,19 +55,19 @@ pipeline {
                 stage('Deploy microservice - HR-USER'){
                     steps {
                         sh 'docker rm -f hr-user-prod'
-                        sh 'cd hr-user/ && docker-compose up -d'
+                        sh 'cd hr-user/ && docker-compose up -d --force-recreate'
                     }
                 }
                 stage ('Deploy microservice - HR-OAUTH'){
                     steps {
                         sh 'docker rm -f hr-oauth'
-                        sh 'cd hr-oauth/ && docker-compose up -d'
+                        sh 'cd hr-oauth/ && docker-compose up -d --force-recreate' 
                     }
                 }
                 stage ('Deploy microservice - HR-API-GATEWAY'){
                     steps {
                         sh 'docker rm -f hr-api-gateway'
-                        sh 'cd hr-api-gateway-zuul/ && docker-compose up -d'
+                        sh 'cd hr-api-gateway-zuul/ && docker-compose up -d --force-recreate'
                     }
                 }
             }
