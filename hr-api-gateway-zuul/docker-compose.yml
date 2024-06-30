@@ -10,7 +10,7 @@ services:
     container_name: hr-api-gateway
     hostname: hr-api-gateway
     restart: always
-    port:
+    ports:
       - 8765:8765
     networks:
       - hr-net

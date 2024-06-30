@@ -10,7 +10,7 @@ services:
     container_name: hr-user-prod
     hostname: hr-user
     restart: always
-    port:
+    ports:
       - 7777:7777
     networks:
       - hr-net

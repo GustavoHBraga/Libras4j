@@ -10,7 +10,7 @@ services:
     container_name: hr-server
     hostname: hr-server
     restart: always
-    port:
+    ports:
       - 8761:8761
     networks:
       - hr-net
