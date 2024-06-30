@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(name = "hr-user", path = "/users")
+@FeignClient(name= "hr-user", url = "http://100.25.165.212:7777", path = "/users")
 public interface UserFeignClient {
 
     @GetMapping("/search")
