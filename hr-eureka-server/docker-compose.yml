@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  hr-server: 
+    build:
+      context: .
+      args:
+        - WAR_FILE=target/hr-server.jar
+        - CONTEXT=hr-server
+    container_name: hr-server
+    hostname: hr-server
+    restart: always
+    port:
+      - 8761:8761
+    networks:
+      - hr-net
+      
+networks:
+  hr-net: 

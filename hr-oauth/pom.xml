@@ -71,6 +71,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>hr-oauth</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

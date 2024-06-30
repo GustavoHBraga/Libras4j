@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  hr-api-gateway: 
+    build:
+      context: .
+      args:
+        - WAR_FILE=target/hr-api-gateway.jar
+        - CONTEXT=hr-api-gateway
+    container_name: hr-api-gateway
+    hostname: hr-api-gateway
+    restart: always
+    port:
+      - 8765:8765
+    networks:
+      - hr-net
+      
+networks:
+  hr-net: 

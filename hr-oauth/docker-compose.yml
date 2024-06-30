@@ -10,11 +10,6 @@ services:
     container_name: hr-oauth
     hostname: hr-oauth
     restart: always
-    environment:
-      - CLIENT_NAME=${CLIENT_NAME}
-      - CLIENT_SECRET=${CLIENT_SECRET}
-      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
-      - REFRESH_TIME=${REFRESH_TIME}
     networks:
       - hr-net
       

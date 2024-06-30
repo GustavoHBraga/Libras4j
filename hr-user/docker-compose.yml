@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  hr-user: 
+    build:
+      context: .
+      args:
+        - WAR_FILE=target/hr-user.jar
+        - CONTEXT=hr-user
+    container_name: hr-user-prod
+    hostname: hr-user
+    restart: always
+    port:
+      - 7777:7777
+    networks:
+      - hr-net
+      
+networks:
+  hr-net:

@@ -72,6 +72,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>hr-api-gateway</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
