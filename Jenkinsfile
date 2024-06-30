@@ -2,13 +2,32 @@ pipeline {
     agent any
     stages {
         stage ('Build maven'){
-            steps {
-                sh 'cd hr-user/ && mvn install -DskipTests'
-            }
-        }
-        stage ('Teste BDD'){
-            steps {
-                sh 'echo "Testando"'
+            parallel {
+                stage ('Build maven User'){
+                    steps {
+                        sh 'cd hr-user/ && mvn install -DskipTests'
+                    }
+                }
+                stage ('Build maven Oauth'){
+                    steps {
+                        sh 'cd hr-oauth/ && mvn install -DskipTests'
+                    }
+                }
+                stage ('Build maven Server'){
+                    steps {
+                        sh 'cd hr-eureka-server/ && mvn install -DskipTests'
+                    }
+                }
+                stage ('Build maven Api-Gateway'){
+                    steps {
+                        sh 'cd hr-api-gateway-zuul/ && mvn install -DskipTests'
+                    }
+                }
+                stage ('Build maven Config Server'){
+                    steps {
+                        sh 'cd ~/environment/Libras4j/Libras4j/hr-config-server/ && mvn install -DskipTests'
+                    }
+                }
             }
         }
         stage ('Teste TDD'){
