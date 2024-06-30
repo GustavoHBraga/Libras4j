@@ -10,6 +10,8 @@ services:
     container_name: hr-oauth
     hostname: hr-oauth
     restart: always
+    ports:
+      - 8077:8077
     networks:
       - hr-net
       
