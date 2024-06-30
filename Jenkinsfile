@@ -25,11 +25,13 @@ pipeline {
                 }
             }
         }
+        
         stage ('Teste TDD - HR-USER'){
             steps {
                 sh 'cd hr-user/ && mvn clean test install'
             }
         }
+        
         stage ('SonarQube Analysis - HR-USER'){
             environment {
                 sonarscanner = tool 'SONAR_SCANNER'
@@ -46,6 +48,7 @@ pipeline {
                 sh 'cd hr-eureka-server/ && docker-compose up -d'
             }
         }
+        
         stage ('Deploy microservice server - ALL'){
             parallel {
                 stage('Deploy microservice - HR-USER'){
@@ -66,6 +69,7 @@ pipeline {
             }
         }
     }
+    
     post {
         always {
             junit allowEmptyResults: true, testResults: 'hr-user/target/surefire-reports/*.xml'
