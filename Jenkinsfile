@@ -45,7 +45,7 @@ pipeline {
         
         stage ('Deploy microservice server - HR-SERVER'){
             steps {
-                sh 'cd hr-eureka-server/ && docker-compose up -d'
+                sh 'cd hr-eureka-server/ && sudo docker-compose up -d'
             }
         }
         
