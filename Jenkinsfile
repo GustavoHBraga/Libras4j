@@ -26,11 +26,10 @@ pipeline {
                 }
             }
             
-        }
-        
+        }        
         stage ('Deploy microservices'){
             steps {
-                sh 'echo "Testando"'
+                sh 'cd hr-user/ && docker-compose up -d'
             }
         }
     }
